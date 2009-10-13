@@ -1,0 +1,22 @@
+id: CacheManager
+name: "Module Cache Manager"
+description: "This plugin provides additional functionality to Movable Type to assist in the management of template module caches."
+author_name: Endevver
+author_link: http://www.endevver.com/
+version: 1.0
+
+callbacks:
+    MT::App::CMS::template_source.list_template: $CacheManager::CacheManager::Plugin::xfrm_list
+
+applications:
+  cms:
+    list_actions:
+      template:
+        clear_cache:
+          label: Clear Cache
+          order: 120
+          code: $CacheManager::CacheManager::Plugin::itemset_clearcache
+        view_cache:
+          label: View Cache
+          order: 121
+          code: $CacheManager::CacheManager::Plugin::itemset_viewcache
